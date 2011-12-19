@@ -74,6 +74,9 @@ class TestBot(SingleServerIRCBot):
         if comment is None:
             comment = ''
         comment = '[%s]' % comment
+        if tags.find(","):
+            c.privmsg(nick, 'Try using more than one tag. Also, tags are separated with commas, not spaces.')
+            return
         # Connects to del.icio.us
         try:
             print 'Submitted by ' + nick + ' ' + comment
